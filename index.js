@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
-
 var countries = require('./countries.js')
+const authorize = require('./authorize')
 
+app.use(authorize)
 app.get('/api/v1/countries', (req, res) => {
 
     let country_data = false
@@ -11,7 +12,7 @@ app.get('/api/v1/countries', (req, res) => {
     const { country_iso3_code } = req.query
 
     if (country_name) {
-        country_data = countries.find(country => country.name === country_name);
+        country_data = countries.find(country => country.name.toLowerCase() === country_name.toLowerCase());
         if (!country_data) {
             return res.json({ success: true, error: 'Country not found' })
         }
@@ -20,7 +21,7 @@ app.get('/api/v1/countries', (req, res) => {
     }
 
     if (country_iso2_code) {
-        country_data = countries.find(country => country.alpha_2_code === country_iso2_code);
+        country_data = countries.find(country => country.alpha_2_code === country_iso2_code.toUpperCase());
         if (!country_data) {
             return res.json({ success: true, error: 'Country not found' })
         }
@@ -29,7 +30,7 @@ app.get('/api/v1/countries', (req, res) => {
     }
 
     if (country_iso3_code) {
-        country_data = countries.find(country => country.alpha_3_code === country_iso3_code);
+        country_data = countries.find(country => country.alpha_3_code === country_iso3_code.toUpperCase());
         if (!country_data) {
             return res.json({ success: true, error: 'Country not found' })
         }
