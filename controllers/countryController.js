@@ -2081,7 +2081,7 @@ exports.currency = (req, res) => {
     let country_details = false
     const currency = req.params.currency.trim();
 
-    if (currency_code) {
+    if (currency) {
         country_details = countries.find(country => country.currency_code == currency.toUpperCase());
         if (!country_details) {
             return res.status(400).json({ success: true, error: `Resounce not found with currency code ${currency}.` })
@@ -2136,13 +2136,13 @@ exports.iso3 = (req, res) => {
     const iso3 = req.params.iso3.trim();
 
     if (iso3) {
-        country_details = countries.find(country => country.alpha_2_code === iso3.toUpperCase());
+        country_details = countries.find(country => country.alpha_3_code === iso3.toUpperCase());
         if (!country_details) {
-            return res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso3}.` })
+            return res.status(400).json({ success: true, error: `Resounce not found with ISO 3 code ${iso3}.` })
         }
 
         return res.json({ success: true, result: country_details })
     }
 
-    res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso3}.` })
+    res.status(400).json({ success: true, error: `Resounce not found with ISO 3 code ${iso3}.` })
 };
