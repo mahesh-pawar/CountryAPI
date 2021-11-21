@@ -1,7 +1,8 @@
 # CountryAPI
-This is a basic API to fetch country details by country name and country code.
+CountryAPI is a open source API to fetch country details by country name, currency code, phone code ISO 2 code & ISO 3 code.
 
-# How to use
+## How to Setup CountryAPI
+
 ~~~ 
 git clone https://github.com/mahesh-pawar/CountryAPI.git
 cd CountryAPI
@@ -9,14 +10,24 @@ npm install
 nodemon index
 ~~~  
 
-## Now, Search URL in the browser on via Postman -
+## How to Use CountryAPI in the browser or via Postman -
+
 ~~~
-By Country Name: 
-http://localhost:3000/api/v1/countries?api_key=CountryAPI&country_name=India
+Get All Country List:
+http://localhost:3000/v1/countries?api_key=CountryAPI
+
+By Country Name:
+http://localhost:3000/v1/countries/name/india?api_key=CountryAPI
+
+By Currency Code:
+http://localhost:3000/v1/countries/currency/INR?api_key=CountryAPI
+
+By Phone Code:
+http://localhost:3000/v1/countries/phone/91?api_key=CountryAPI
 
 By ISO 2 Country Code: 
-http://localhost:3000/api/v1/countries?api_key=CountryAPI&country_iso2_code=IN
+http://localhost:3000/v1/countries/iso2/IN?api_key=CountryAPI
 
-By ISO 3 Country Code: 
-http://localhost:3000/api/v1/countries?api_key=CountryAPI&country_iso3_code=IND
+By ISO 3 Country Code:
+http://localhost:3000/v1/countries/iso3/IND?api_key=CountryAPI
 ~~~

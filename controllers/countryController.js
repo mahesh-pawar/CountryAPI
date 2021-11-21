@@ -1999,4 +1999,150 @@ const countries = [
     }
 ];
 
-module.exports = countries
+// exports.index = (req, res) => {
+//     let country_data = false
+//     const { name } = req.query
+//     const { iso2_code } = req.query
+//     const { iso3_code } = req.query
+//     const { phone_code } = req.query
+//     const { currency_code } = req.query
+
+//     if (name) {
+//         country_details = countries.find(country => country.name.toLowerCase() === name.toLowerCase());
+//         if (!country_details) {
+//             return res.status(400).json({ success: true, error: 'Country not found' })
+//         }
+
+//         return res.json({ success: true, result: country_details })
+//     }
+
+//     if (iso2_code) {
+//         country_details = countries.find(country => country.alpha_2_code === iso2_code.toUpperCase());
+//         if (!country_details) {
+//             return res.status(400).json({ success: true, error: 'Country not found' })
+//         }
+
+//         return res.json({ success: true, result: country_details })
+//     }
+
+//     if (iso3_code) {
+//         country_details = countries.find(country => country.alpha_3_code === iso3_code.toUpperCase());
+//         if (!country_data) {
+//             return res.status(400).json({ success: true, error: 'Country not found' })
+//         }
+
+//         return res.json({ success: true, result: country_details })
+//     }
+
+//     if (phone_code) {
+//         country_details = countries.find(country => country.phone_code == phone_code);
+//         if (!country_details) {
+//             return res.status(400).json({ success: true, error: `Resounce not found with phone code ${phone_code}.` })
+//         }
+
+//         return res.json({ success: true, result: country_details })
+//     }
+
+//     if (currency_code) {
+//         country_details = countries.find(country => country.currency_code == currency_code.toUpperCase());
+//         if (!country_details) {
+//             return res.status(400).json({ success: true, error: `Resounce not found with currency code ${currency_code}.` })
+//         }
+
+//         return res.json({ success: true, result: country_details })
+//     }
+
+//     res.json({ success: true, result: countries })
+// };
+
+exports.index = (req, res) => {
+    res.json({ success: true, result: countries })
+};
+
+exports.name = (req, res) => {
+
+    let country_details = false
+    const name = req.params.name.trim();
+    
+    if (name) {
+        country_details = countries.find(country => country.name.toLowerCase() === name.toLowerCase());
+        if (!country_details) {
+            return res.status(400).json({ success: true, error: `Resource not found with name ${name}.` })
+        }
+
+        return res.json({ success: true, result: country_details })
+    }  
+    
+    res.status(400).json({ success: true, error: `Resource not found with name ${name}.` });
+};
+
+exports.currency = (req, res) => {
+    
+    let country_details = false
+    const currency = req.params.currency.trim();
+
+    if (currency_code) {
+        country_details = countries.find(country => country.currency_code == currency.toUpperCase());
+        if (!country_details) {
+            return res.status(400).json({ success: true, error: `Resounce not found with currency code ${currency}.` })
+        }
+
+        return res.json({ success: true, result: country_details })
+    }
+
+    return res.status(400).json({ success: true, error: `Resounce not found with currency code ${currency}.` })
+
+};
+
+exports.phone = (req, res) => {
+    
+    let country_details = false
+    const phone = req.params.phone.trim();
+
+    if (phone) {
+        country_details = countries.find(country => country.phone_code == phone);
+        if (!country_details) {
+            return res.status(400).json({ success: true, error: `Resounce not found with phone code ${phone}.` })
+        }
+
+        return res.json({ success: true, result: country_details })
+    }
+
+    res.status(400).json({ success: true, error: `Resounce not found with phone code ${phone}.` });
+};
+
+
+exports.iso2 = (req, res) => {
+
+    let country_details = false
+    const iso2 = req.params.iso2.trim();
+
+    if (iso2) {
+        country_details = countries.find(country => country.alpha_2_code === iso2.toUpperCase());
+        if (!country_details) {
+            return res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso2}.` })
+        }
+
+        return res.json({ success: true, result: country_details })
+    }
+
+    res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso2}.` })
+};
+
+
+exports.iso3 = (req, res) => {
+
+    let country_details = false
+    const iso3 = req.params.iso3.trim();
+
+    if (iso3) {
+        country_details = countries.find(country => country.alpha_2_code === iso3.toUpperCase());
+        if (!country_details) {
+            return res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso3}.` })
+        }
+
+        return res.json({ success: true, result: country_details })
+    }
+
+    res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso3}.` })
+};
