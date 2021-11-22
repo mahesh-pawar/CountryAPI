@@ -15,10 +15,7 @@ router.get('/currency/:currency/', country_controller.currency);
 // Get Country Details by Currency Code.
 router.get('/phone/:phone/', country_controller.phone);
 
-// Get Country Details by ISO 2 Code.
-router.get('/iso2/:iso2/', country_controller.iso2);
-
 // Get Country Details by ISO 3 Code.
-router.get('/iso3/:iso3/', country_controller.iso3);
+router.get('/code/:code/', country_controller.code);
 
 module.exports = router;

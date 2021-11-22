@@ -2112,37 +2112,28 @@ exports.phone = (req, res) => {
 };
 
 
-exports.iso2 = (req, res) => {
+exports.code = (req, res) => {
 
     let country_details = false
-    const iso2 = req.params.iso2.trim();
+    const iso_code = req.params.code.trim();
 
-    if (iso2) {
-        country_details = countries.find(country => country.alpha_2_code === iso2.toUpperCase());
+    if (2 === iso_code.length) {
+        country_details = countries.find(country => country.alpha_2_code === iso_code.toUpperCase());
         if (!country_details) {
-            return res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso2}.` })
+            return res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso_code}.` })
         }
 
         return res.json({ success: true, result: country_details })
     }
 
-    res.status(400).json({ success: true, error: `Resounce not found with ISO 2 code ${iso2}.` })
-};
-
-
-exports.iso3 = (req, res) => {
-
-    let country_details = false
-    const iso3 = req.params.iso3.trim();
-
-    if (iso3) {
-        country_details = countries.find(country => country.alpha_3_code === iso3.toUpperCase());
+    if (3 === iso_code.length) {
+        country_details = countries.find(country => country.alpha_3_code === iso_code.toUpperCase());
         if (!country_details) {
-            return res.status(400).json({ success: true, error: `Resounce not found with ISO 3 code ${iso3}.` })
+            return res.status(400).json({ success: true, error: `Resounce not found with ISO 3 code ${iso_code}.` })
         }
 
         return res.json({ success: true, result: country_details })
     }
 
-    res.status(400).json({ success: true, error: `Resounce not found with ISO 3 code ${iso3}.` })
+    res.status(400).json({ success: true, error: `Resounce not found with ISO code ${iso_code}.` })
 };

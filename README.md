@@ -25,9 +25,8 @@ http://localhost:3000/v1/countries/currency/INR?api_key=CountryAPI
 By Phone Code:
 http://localhost:3000/v1/countries/phone/91?api_key=CountryAPI
 
-By ISO 2 Country Code: 
-http://localhost:3000/v1/countries/iso2/IN?api_key=CountryAPI
-
-By ISO 3 Country Code:
-http://localhost:3000/v1/countries/iso3/IND?api_key=CountryAPI
+By ISO 2 or ISO 3 Country Code: 
+http://localhost:3000/v1/countries/code/IN?api_key=CountryAPI
+or
+http://localhost:3000/v1/countries/code/IND?api_key=CountryAPI
 ~~~
